@@ -1,0 +1,71 @@
+<html>
+<script language="javascript">
+
+    var startTime = 0;
+
+    function play() {
+        var audio = new Audio('aac');
+        audio.addEventListener('error', function failed(e) {
+            switch (e.target.error.code) {
+                case e.target.error.MEDIA_ERR_ABORTED:
+                case e.target.error.MEDIA_ERR_NETWORK:
+                case e.target.error.MEDIA_ERR_DECODE:
+                case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                default:
+                    viewmode('error');
+                    break;
+            }
+        }, true);
+        audio.addEventListener('playing', function playing(e) {
+            viewmode('playing');
+            startTime = 0;
+        }, true);
+        audio.addEventListener('ended', function ended(e) {
+            viewmode('ended');
+        }, true);
+        audio.addEventListener('progress', function progress(e) {
+            var t = e.timeStamp;
+            if (startTime === 0) {
+                startTime = t;
+            }
+            document.getElementById("progress").textContent = "" + (t - startTime);
+        }, true);
+
+        viewmode('loading');
+        audio.play();
+    }
+
+    function viewmode(view) {
+        document.getElementById('loading').style.display = (view === 'loading' ? 'block' : 'none');
+        document.getElementById('playing').style.display = (view === 'playing' ? 'block' : 'none');
+        document.getElementById('error').style.display = (view === 'error' ? 'block' : 'none');
+        document.getElementById('ended').style.display = (view === 'ended' ? 'block' : 'none');
+    }
+
+</script>
+<body onload="play()">
+<center>
+    <br>
+    <br>
+    <div id="loading" style="display: none">
+        Loading...
+    </div>
+    <div id="playing" style="display: none">
+        <br>
+        <div id="progress"></div>
+    </div>
+    <div id="error" style="display: none">
+        Error<br>
+        <a href="#" onclick="play()">Play</a>
+    </div>
+    <div id="ended" style="display: none">
+        OFF AIR<br>
+        <br>
+        <a href="#" onclick="play()">Play</a>
+    </div>
+    <br>
+    <br>
+    <a href="listen.m3u">listen.m3u</a>
+</center>
+</body>
+</html>
