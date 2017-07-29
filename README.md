@@ -25,7 +25,14 @@ and then these frames are used as discreet segments which are queued for consump
 If a client pauses reading or gets behind, frames are simply dropped from its queue until it
 catches up.
 
-Sealcast can be packaged as a jar and deployed to an application server.
+Sealcast also has a rewind feature allow you to listen to a stream from the beginning of the broadcast.
+For live broadcasts sealcast currently relies on the real time stream to provide the inherent timing the clients.
+A copy of the stream is saved along with a timing file which records the offset time at which each frame was
+received by the server. On playback of the saved file, sealcast will use the timing file to apply the
+appropriate timing to each frame. Sealcast doesn't let the client read it as fast as they like, throwing out your bandwidth
+capacity planning for genuine listeners.
+
+Sealcast can be packaged as a war and deployed to an application server.
 The simplest way to start broadcasting though is to use the jetty plugin.
 This will also allow you to see the status panel on the same terminal.
 
