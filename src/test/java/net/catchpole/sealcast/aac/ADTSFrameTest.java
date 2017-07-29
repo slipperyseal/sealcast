@@ -12,14 +12,15 @@ public class ADTSFrameTest {
     @Ignore
     @Test
     public void test() throws IOException {
-        FileOutputStream fileOutputStream = new FileOutputStream("/Users/ccatch/test-out.aac");
+        FileOutputStream fileOutputStream = new FileOutputStream("test-out.aac");
         try {
-            DataInputStream dataInputStream = new DataInputStream(new FileInputStream("/Users/ccatch/test.aac"));
+            DataInputStream dataInputStream = new DataInputStream(new FileInputStream("test.aac"));
             try {
                 int x = 0;
                 for (; ; ) {
                     ADTSFrame adtsWholeFrame = new ADTSFrame(dataInputStream);
                     System.out.println(" " + x + " " + adtsWholeFrame.getData().length);
+                    // drop every second frame
                     if ((x&1) == 0) {
                         fileOutputStream.write(adtsWholeFrame.getData());
                     }

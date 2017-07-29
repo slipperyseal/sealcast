@@ -11,6 +11,7 @@ It listens for a socket connection for an AAC ADTS stream (not in an MP4 contain
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) "Rewind" to beginning of live broadcast.
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Creates local copy of broadcast.
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Sends clients a priming buffer and then continues stream real time.
+- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Can be used to realy other AAC shoutcast streams.
 
 ![sealcast](http://www.catchpole.net/images/sealcast.jpg "sealcast")
 
@@ -25,7 +26,7 @@ If a client pauses reading or gets behind, frames are simply dropped from its qu
 catches up.
 
 Sealcast can be packaged as a jar and deployed to an application server.
-The simplest way to start broardcasting though is to use the jetty plugin.
+The simplest way to start broadcasting though is to use the jetty plugin.
 This will also allow you to see the status panel on the same terminal.
 
         mvn jetty:run
