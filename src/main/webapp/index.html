@@ -1,71 +1,132 @@
 <html>
-<script language="javascript">
+<head>
+    <meta charset="utf-8">
+    <title>sealcast</title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+            background: #ffffff;
+            color: #000000;
+            font-family: 'Arial';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 16px;
+            margin: auto;
+            text-align: center;
+            margin-top: 40px;
+        }
+        a:link {
+            color: #000000;
+        }
+        a:visited {
+            color: #000000;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: none;
+        }
+        .progress {
+            margin-top: 20px;
+        }
+        .offair {
+            margin-top: 20px;
+        }
+        .listen {
+            margin-top: 20px;
+        }
+    </style>
+    <script language="javascript">
 
-    var startTime = 0;
+        var startTime = 0;
 
-    function play() {
-        var audio = new Audio('aac');
-        audio.addEventListener('error', function failed(e) {
-            switch (e.target.error.code) {
-                case e.target.error.MEDIA_ERR_ABORTED:
-                case e.target.error.MEDIA_ERR_NETWORK:
-                case e.target.error.MEDIA_ERR_DECODE:
-                case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-                default:
-                    viewmode('error');
-                    break;
-            }
-        }, true);
-        audio.addEventListener('playing', function playing(e) {
-            viewmode('playing');
-            startTime = 0;
-        }, true);
-        audio.addEventListener('ended', function ended(e) {
-            viewmode('ended');
-        }, true);
-        audio.addEventListener('progress', function progress(e) {
-            var t = e.timeStamp;
-            if (startTime === 0) {
-                startTime = t;
-            }
-            document.getElementById("progress").textContent = "" + (t - startTime);
-        }, true);
+        function play() {
+            var audio = new Audio('aac');
+            audio.addEventListener('error', function failed(e) {
+                switch (e.target.error.code) {
+                    case e.target.error.MEDIA_ERR_ABORTED:
+                    case e.target.error.MEDIA_ERR_NETWORK:
+                    case e.target.error.MEDIA_ERR_DECODE:
+                    case e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                    default:
+                        viewmode('error');
+                        break;
+                }
+            }, true);
+            audio.addEventListener('playing', function playing(e) {
+                viewmode('playing');
+                startTime = 0;
+            }, true);
+            audio.addEventListener('ended', function ended(e) {
+                viewmode('ended');
+            }, true);
+            audio.addEventListener('progress', function progress(e) {
+                var t = e.timeStamp;
+                if (startTime === 0) {
+                    startTime = t;
+                }
+                document.getElementById("progress").textContent = "" + (t - startTime);
+            }, true);
 
-        viewmode('loading');
-        audio.play();
-    }
+            viewmode('loading');
+            audio.play();
+        }
 
-    function viewmode(view) {
-        document.getElementById('loading').style.display = (view === 'loading' ? 'block' : 'none');
-        document.getElementById('playing').style.display = (view === 'playing' ? 'block' : 'none');
-        document.getElementById('error').style.display = (view === 'error' ? 'block' : 'none');
-        document.getElementById('ended').style.display = (view === 'ended' ? 'block' : 'none');
-    }
-
-</script>
+        function viewmode(view) {
+            document.getElementById('loading').style.display = (view === 'loading' ? 'block' : 'none');
+            document.getElementById('playing').style.display = (view === 'playing' ? 'block' : 'none');
+            document.getElementById('error').style.display = (view === 'error' ? 'block' : 'none');
+            document.getElementById('ended').style.display = (view === 'ended' ? 'block' : 'none');
+        }
+    </script>
+</head>
 <body onload="play()">
-<center>
-    <br>
-    <br>
     <div id="loading" style="display: none">
         Loading...
     </div>
     <div id="playing" style="display: none">
-        <br>
+        <div><img src="playing.png"></div>
         <div id="progress"></div>
     </div>
     <div id="error" style="display: none">
-        Error<br>
-        <a href="#" onclick="play()">Play</a>
+        <a href="#" onclick="play()"><img src="error.png"></a>
     </div>
     <div id="ended" style="display: none">
-        OFF AIR<br>
-        <br>
-        <a href="#" onclick="play()">Play</a>
+        <a href="#" onclick="play()"><img src="play.png"></a>
+        <div class="offair">OFF AIR</div>
     </div>
-    <br>
-    <br>
-    <a href="listen.m3u">listen.m3u</a>
-</center>
+    <div id="listen">
+        <a href="listen.m3u">listen.m3u</a>
+    </div>
 </body>
 </html>
