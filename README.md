@@ -11,7 +11,7 @@ It listens for a socket connection for an AAC ADTS stream (not in an MP4 contain
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) "Rewind" to beginning of live broadcast.
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Creates local copy of broadcast.
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Sends clients a priming buffer and then continues stream real time.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Can be used to realy other AAC shoutcast streams.
+- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Can be used to relay other AAC shoutcast streams.
 
 ![sealcast](http://www.catchpole.net/images/sealcast.jpg "sealcast")
 
