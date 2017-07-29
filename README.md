@@ -45,6 +45,8 @@ the AAC ADTS stream...
         ffmpeg -f alsa -ac 4 -ar 48000 -sample_fmt s16 \
                -i default:CARD=U192k -y -c:a libfdk_aac -b:a 96k \
                -f adts -c:a libfdk_aac -b:a 96k -ac 2 tcp://localhost:9999
+
+![sealcast console](http://www.catchpole.net/images/sealcastconsole.png "sealcast console")
                
 Ping [slipperyseal](https://twitter.com/slipperyseal) on Twitter if you use sealcast to broadcast and I'll
 listen in if i can.
