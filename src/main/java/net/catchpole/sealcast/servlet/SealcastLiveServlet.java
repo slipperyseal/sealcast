@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SealcastLiveServlet extends HttpServlet {
     private static final FrameQueueDispatcher frameDispatcher = new FrameQueueDispatcher(100000);
     public static final FeedDispatcher feedDispatcher = new FeedDispatcher(frameDispatcher);
-    public static final EventLog eventLog = new EventLog(new File("events" + System.currentTimeMillis() + ".log"));
+    public static final EventLog eventLog = new EventLog(new File("events" + new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".log"));
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {

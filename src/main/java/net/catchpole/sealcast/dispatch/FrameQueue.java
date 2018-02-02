@@ -12,6 +12,7 @@ public class FrameQueue {
     private final int limit;
     private int length;
     private Listener listener;
+    private int framesRead;
 
     public FrameQueue(int limit, Listener listener) {
         this.limit = limit;
@@ -34,6 +35,7 @@ public class FrameQueue {
                 return null;
             }
         }
+        this.framesRead++;
         ADTSFrame adtsFrame = adtsFrames.remove(0);
         this.length -= adtsFrame.getData().length;
         return adtsFrame;
@@ -45,7 +47,8 @@ public class FrameQueue {
 
     public synchronized String toString() {
         return this.getClass().getSimpleName() + " " + listener +
-                "\tSince " + timeTracker.getStartDate() + "\t" + timeTracker.getHoursMinsSeconds() +
-                (adtsFrames.size() > 0 ? ("\t" + adtsFrames.size() + " frames") : "");
+                "\tSince " + timeTracker.getStartDate() +
+                "\t" + timeTracker.getHoursMinsSeconds() +
+                "\t" + this.framesRead + " frames read";
     }
 }

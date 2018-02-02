@@ -22,4 +22,8 @@ public class Listener {
     public boolean isLive() {
         return live;
     }
+
+    public String toString() {
+        return this.getClass().getSimpleName() + " " +  serial + " " + origin + (live ? " LIVE" : " PLAYBACK");
+    }
 }
