@@ -95,7 +95,7 @@
                 if (startTime === 0) {
                     startTime = t;
                 }
-                document.getElementById("progress").textContent = "" + (t - startTime);
+                document.getElementById("progress").textContent = "" + Math.floor(t - startTime);
             }, true);
 
             viewmode('loading');
@@ -126,7 +126,8 @@
         <div class="offair">OFF AIR</div>
     </div>
     <div id="listen">
-        <a href="listen.m3u">listen.m3u</a>
+        <br><br><a href="listen.m3u">listen.m3u</a>
+        <br><br>direct stream > http://radio.catchpole.net:5555/aac
     </div>
 </body>
 </html>

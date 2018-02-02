@@ -1,5 +1,6 @@
 package net.catchpole.sealcast.recorder;
 
+import net.catchpole.console.TimeTracker;
 import net.catchpole.sealcast.aac.ADTSFrame;
 import net.catchpole.sealcast.dispatch.FrameDispatcher;
 
@@ -10,24 +11,17 @@ import java.io.IOException;
 public class PlaybackDispatcher {
     private DataInputStream aacInputStream;
     private DataInputStream timingInputStream;
-    private long primingMillis;
 
-    public PlaybackDispatcher(String name, long primingMillis) throws IOException {
+    public PlaybackDispatcher(String name) throws IOException {
         this.aacInputStream = new DataInputStream(new FileInputStream(name + ".aac"));
         this.timingInputStream = new DataInputStream(new FileInputStream(name + ".time"));
-        this.primingMillis = primingMillis;
     }
 
     public void dispatch(FrameDispatcher frameDispatcher) {
         try {
-            long primeTime;
-            while ((primeTime = timingInputStream.readLong()) < primingMillis) {
-                frameDispatcher.dispatch(new ADTSFrame(aacInputStream));
-            }
-
-            long startTime = System.currentTimeMillis() + primeTime;
+            TimeTracker timeTracker = new TimeTracker();
             for (; ; ) {
-                long delay = startTime + timingInputStream.readLong() - System.currentTimeMillis();
+                long delay = timingInputStream.readLong() - timeTracker.getElapsed();
                 if (delay > 0) {
                     Thread.sleep(delay);
                 }

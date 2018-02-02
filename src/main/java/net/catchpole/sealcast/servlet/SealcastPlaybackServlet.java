@@ -39,7 +39,7 @@ public class SealcastPlaybackServlet extends HttpServlet {
             if (recorder == null) {
                 httpServletResponse.setStatus(404);
             } else {
-                PlaybackDispatcher playbackDispatcher = new PlaybackDispatcher(recorder.getName(), 15000);
+                PlaybackDispatcher playbackDispatcher = new PlaybackDispatcher(recorder.getName());
                 playbackDispatcher.dispatch(new OutputStreamFrameDispatcher(httpServletResponse.getOutputStream()));
             }
         } finally {

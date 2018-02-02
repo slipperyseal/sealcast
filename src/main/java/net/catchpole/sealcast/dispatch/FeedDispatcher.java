@@ -1,5 +1,7 @@
 package net.catchpole.sealcast.dispatch;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import net.catchpole.console.TimeTracker;
 import net.catchpole.sealcast.ConsoleView;
 import net.catchpole.sealcast.aac.ADTSFrame;
@@ -32,7 +34,7 @@ public class FeedDispatcher {
 
                 this.timeTracker = new TimeTracker();
 
-                this.recorder = new Recorder(Long.toString(System.currentTimeMillis()));
+                this.recorder = new Recorder(new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()));
                 ConsoleView consoleView = new ConsoleView(frameDispatcher, timeTracker);
                 consoleView.start();
                 try {
