@@ -13,7 +13,7 @@ It listens for a socket connection for an AAC ADTS stream (not in an MP4 contain
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Sends clients a priming buffer and then continues stream real time.
 - ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Can be used to relay other AAC shoutcast streams.
 
-![sealcast](http://www.slipperyseal.net/images/sealcast.jpg "sealcast")
+![sealcast](http://kamome.slipperyseal.net/sealcast-turnable.jpg "sealcast")
 
 I created this project as I wanted to do my own AAC shoutcast broadcasting but couldn't
 find any simple, free solutions (that's not to say they don't exist).
@@ -46,8 +46,6 @@ the AAC ADTS stream...
                -i default:CARD=U192k -y -c:a libfdk_aac -b:a 96k \
                -f adts -c:a libfdk_aac -b:a 96k -ac 2 tcp://localhost:9999
 
-![sealcast console](http://www.slipperyseal.net/images/sealcastconsole.png "sealcast console")
-               
 Ping [slipperyseal](https://twitter.com/slipperyseal) on Twitter if you use sealcast to broadcast and I'll
 listen in if i can.
 
