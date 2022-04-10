@@ -4,14 +4,14 @@ Simple ShoutCast server for broadcasting AAC written in Java
 This simple Java web application is a ShoutCast server.
 It listens for a socket connection for an AAC ADTS stream (not in an MP4 container).
 
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Simple web interface to play stream with HTML 5.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Play on ShoutCast compatible players. VLC etc.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Supports live AAC ADTS streams.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Simple TTY status panel showing connected listeners.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) "Rewind" to beginning of live broadcast.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Creates local copy of broadcast.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Sends clients a priming buffer and then continues stream real time.
-- ![#1589F0](http://placehold.it/15/1589F0/000000?text=+) Can be used to relay other AAC shoutcast streams.
+- Simple web interface to play stream with HTML 5.
+- Play on ShoutCast compatible players. VLC etc.
+- Supports live AAC ADTS streams.
+- Simple TTY status panel showing connected listeners.
+- "Rewind" to beginning of live broadcast.
+- Creates local copy of broadcast.
+- Sends clients a priming buffer and then continues stream real time.
+- Can be used to relay other AAC shoutcast streams.
 
 ![sealcast](https://storage.googleapis.com/kyoto.catchpole.net/sealcast-turnable.jpg "sealcast")
 
