@@ -46,7 +46,7 @@ the AAC ADTS stream...
                -i default:CARD=U192k -y -c:a libfdk_aac -b:a 96k \
                -f adts -c:a libfdk_aac -b:a 96k -ac 2 tcp://localhost:9999
 
-Ping [catchapolay](https://twitter.com/catchapolay) on Twitter if you use sealcast to broadcast and I'll
+Ping [catchapolay](https://twitter.com/slipperyseal) on Twitter if you use sealcast to broadcast and I'll
 listen in if i can.
 
 Enjoy!
