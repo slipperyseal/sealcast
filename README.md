@@ -13,7 +13,7 @@ It listens for a socket connection for an AAC ADTS stream (not in an MP4 contain
 - Sends clients a priming buffer and then continues stream real time.
 - Can be used to relay other AAC shoutcast streams.
 
-![sealcast](https://storage.googleapis.com/kyoto.catchpole.net/sealcast-turnable.jpg "sealcast")
+![sealcast](https://github.com/slipperyseal/sealcast/blob/slippery/doc/sealcast-turnable.jpg "sealcast")
 
 I created this project as I wanted to do my own AAC shoutcast broadcasting but couldn't
 find any simple, free solutions (that's not to say they don't exist).
